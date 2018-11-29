@@ -26,3 +26,8 @@
   <button bindtap='playRecord' type='primary' id='{{index}}' bindlongpress="deletelongtap">录音{{index}} 时长:{{item.recordtime}}</button>
 </view>
 </block>
+<block wx:for-items="{{imageData}}"  wx:key="testitem">
+<view>
+  <image src='{{item}}' bindtap='touchimageAction' data-image = '{{item}}'></image>
+</view>
+</block>

@@ -10,7 +10,8 @@ Page({
     voiceDetail:{
      voiceUrl:'',
      recordtime:''
-    }
+    },
+    imageData:[]
   },
 
 
@@ -156,23 +157,31 @@ Page({
   updata_img: function () {
     var that = this;
     wx.chooseImage({
-      count: 1, // 默认9
-      sizeType: ['compressed'],
+      count: 3, // 默认9
       success: function (res) {
-
-
-        console.log('tempFiles', res.tempFiles[0].size)
-        var size = res.tempFiles[0].size;
-        var size_kb = (size / 1000).toFixed(2);//
-        if (size_kb > 2048) {
-          console.log('2048', '2048')
-        }
-        console.log('size_kb', size_kb)
+        that.setData({
+          imageData : res.tempFilePaths
+        })
+        // console.log('tempFiles', res.tempFiles[0].size)
+        // var size = res.tempFiles[0].size;
+        // var size_kb = (size / 1000).toFixed(2);//
+        // if (size_kb > 2048) {
+        //   console.log('2048', '2048')
+        // }
+        // console.log('size_kb', size_kb)
       },
        fail(res) {
         console.log('图片选中失败', res);
       }
     })
   },
+  touchimageAction: function(e){
+    console.log(e);
+    const currentimg = e.currentTarget.dataset.image;
+    wx.previewImage({
+      current: currentimg,
+      urls:this.data.imageData
+    })
+  }
 
 });
