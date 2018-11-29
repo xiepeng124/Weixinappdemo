@@ -1,0 +1,28 @@
+ 
+ 
+
+
+
+<button open-type='contact'>联系客服</button>
+
+<view class='margin'></view>
+<button class='button' bindtap="updata_img">选择图片</button>
+
+<view class='margin'></view>
+<button bindtap="start" class='btn'>开始录音</button>
+
+<view class='margin'></view>
+<button bindtap="stop" class='btn'>停止录音</button>
+
+<view class='margin'></view>
+<button bindtap="play" class='btn'>播放录音</button>
+
+<view class='margin'></view>
+<button class = "btn" bindlongpress="longTap" bindtouchstart="touchStart" bindtouchend="touchEnd">
+    长按录音
+</button>
+<block wx:for-items="{{recorddata}}"  wx:key="testitem">
+<view>
+  <button bindtap='playRecord' type='primary' id='{{index}}' bindlongpress="deletelongtap">录音{{index}} 时长:{{item.recordtime}}</button>
+</view>
+</block>
